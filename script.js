@@ -80,10 +80,8 @@ function actualizarMensaje() {
     const tipoDispositivo = detectarDispositivo();
     
     if (tipoDispositivo === 'telefono') {
-      etiquetaSmall.innerText = 'Estás accediendo desde un teléfono.';
-    } else {
-      etiquetaSmall.innerText = 'Estás accediendo desde una PC.';
-    }
+      etiquetaSmall.innerText = 'Click para tachar y mantener para eliminar.';
+    } 
   }
 
 
@@ -97,13 +95,4 @@ function detectarDispositivo() {
       // El usuario está accediendo desde una PC
       return 'pc';
     }
-  }
-  
-  // Ejemplo de uso
-  const tipoDispositivo = detectarDispositivo();
-  
-  if (tipoDispositivo === 'telefono') {
-    console.log('El usuario está accediendo desde un teléfono.');
-  } else {
-    console.log('El usuario está accediendo desde una PC.');
   }
