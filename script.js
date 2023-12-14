@@ -1,6 +1,7 @@
 const form = document.getElementById('form')
 const input = document.getElementById('input')
 const listaUL = document.getElementById('lista')
+const etiquetaSmall = document.querySelector('small');
 
 const lista = JSON.parse(localStorage.getItem('lista'))
 
@@ -52,6 +53,9 @@ function addProducto(producto) {
         input.value = ''
 
         updateLS()
+
+        // Actualizar el contenido de la etiqueta small
+        actualizarMensaje();
     }
 }
 
@@ -69,3 +73,37 @@ function updateLS() {
 
     localStorage.setItem('lista', JSON.stringify(lista))
 }
+
+
+
+function actualizarMensaje() {
+    const tipoDispositivo = detectarDispositivo();
+    
+    if (tipoDispositivo === 'telefono') {
+      etiquetaSmall.innerText = 'Estás accediendo desde un teléfono.';
+    } else {
+      etiquetaSmall.innerText = 'Estás accediendo desde una PC.';
+    }
+  }
+
+
+function detectarDispositivo() {
+    const userAgent = navigator.userAgent;
+  
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)) {
+      // El usuario está accediendo desde un teléfono
+      return 'telefono';
+    } else {
+      // El usuario está accediendo desde una PC
+      return 'pc';
+    }
+  }
+  
+  // Ejemplo de uso
+  const tipoDispositivo = detectarDispositivo();
+  
+  if (tipoDispositivo === 'telefono') {
+    console.log('El usuario está accediendo desde un teléfono.');
+  } else {
+    console.log('El usuario está accediendo desde una PC.');
+  }
